@@ -10,13 +10,12 @@ nnoremap("<leader>c", "<cmd>:q<CR>")
 -- TELESCOPE COMMANDS
 nnoremap("<leader>ff", "<cmd>:Telescope find_files<CR>")
 nnoremap("<leader>fb", "<cmd>:Telescope buffers<CR>")
+nnoremap("<leader>fg", "<cmd>:Telescope live_grep<CR>")
 -- EX COMMANDS
 nnoremap("<leader>nv", "<cmd>:Ex<CR>")
 -- COC COMMANDS
-nnoremap("<leader>.", "<Plug>(coc-codeaction)")
 nnoremap("gd", "<Plug>(coc-definition)")
 nnoremap("K", ":call CocActionAsync('doHover')<CR>", {silent = true, noremap = true})
-nnoremap("<leader>.", "<Plug>(coc-codeaction)")
 nnoremap("<leader>.", "<Plug>(coc-codeaction)")
 -- INSERT MODE REMAP -- 
 

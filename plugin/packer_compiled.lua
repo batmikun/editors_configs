@@ -90,16 +90,6 @@ _G.packer_plugins = {
     path = "C:\\Users\\batmi\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
-  ["neo-tree.nvim"] = {
-    loaded = true,
-    path = "C:\\Users\\batmi\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\neo-tree.nvim",
-    url = "https://github.com/nvim-neo-tree/neo-tree.nvim"
-  },
-  ["nui.nvim"] = {
-    loaded = true,
-    path = "C:\\Users\\batmi\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nui.nvim",
-    url = "https://github.com/MunifTanjim/nui.nvim"
-  },
   ["nvim-web-devicons"] = {
     loaded = true,
     path = "C:\\Users\\batmi\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-web-devicons",
