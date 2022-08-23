@@ -21,13 +21,15 @@ nnoremap("<leader>.", "<Plug>(coc-codeaction)")
 -- INSERT MODE REMAP -- 
 
 -- VIM COMMANDS
-inoremap("jj", "<escape>")
-inoremap("<C-.>", "coc#pum#confirm()", {expr = true})
-inoremap("<C-space>", "coc#refresh()", {expr = true, silent = true})
+inoremap("jk", "<escape>")
+inoremap("kj", "<escape>")
+
+-- COC COMMANDS
+inoremap("<CR>", "coc#pum#visible() ? coc#pum#confirm() : '<CR>'", {silent = true, expr = true})
+inoremap("<c-space>", "coc#refresh()", {expr = true, silent = true})
 
 -- VISUAL MODE REMAP --
+
 -- VIM COMMANDS
 vnoremap("jj", "<escape")
 
--- COC VIM REMAP
-vim.api.nvim_set_keymap("i", "<c-space>", "coc#refresh()", { silent = true, expr = true })
