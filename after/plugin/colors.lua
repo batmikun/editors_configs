@@ -6,11 +6,6 @@ local function set_color_theme()
         integrations = {
             telescope = true
         },
-        neotree = {
-			enabled = true,
-			show_root = true,
-			transparent_panel = false,
-		},
         coc_nvim = true,
     })
 

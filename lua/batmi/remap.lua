@@ -10,28 +10,24 @@ nnoremap("<leader>c", "<cmd>:q<CR>")
 -- TELESCOPE COMMANDS
 nnoremap("<leader>ff", "<cmd>:Telescope find_files<CR>")
 nnoremap("<leader>fb", "<cmd>:Telescope buffers<CR>")
--- NEO TREE COMMANDS
-nnoremap("<leader>nv", "<cmd>:Neotree float<CR>")
-nnoremap("<leader>nc", "<cmd>:Neotree close<CR>")
-
+-- EX COMMANDS
+nnoremap("<leader>nv", "<cmd>:Ex<CR>")
+-- COC COMMANDS
+nnoremap("<leader>.", "<Plug>(coc-codeaction)")
+nnoremap("gd", "<Plug>(coc-definition)")
+nnoremap("K", ":call CocActionAsync('doHover')<CR>", {silent = true, noremap = true})
+nnoremap("<leader>.", "<Plug>(coc-codeaction)")
+nnoremap("<leader>.", "<Plug>(coc-codeaction)")
 -- INSERT MODE REMAP -- 
 
 -- VIM COMMANDS
 inoremap("jj", "<escape>")
-
+inoremap("<C-.>", "coc#pum#confirm()", {expr = true})
+inoremap("<C-space>", "coc#refresh()", {expr = true, silent = true})
 
 -- VISUAL MODE REMAP --
 -- VIM COMMANDS
 vnoremap("jj", "<escape")
 
 -- COC VIM REMAP
-vim.api.nvim_set_keymap("n", "<leader>.", "<Plug>(coc-codeaction)", {})
-vim.api.nvim_set_keymap("n", "<leader>l", ":CocCommand eslint.executeAutofix<CR>", {})
-vim.api.nvim_set_keymap("n", "gd", "<Plug>(coc-definition)", {silent = true})
-vim.api.nvim_set_keymap("n", "K", ":call CocActionAsync('doHover')<CR>", {silent = true, noremap = true})
-vim.api.nvim_set_keymap("n", "<leader>rn", "<Plug>(coc-rename)", {})
-vim.api.nvim_set_keymap("n", "<leader>f", ":CocCommand prettier.formatFile<CR>", {noremap = true})
-vim.api.nvim_set_keymap("i", "<C-Space>", "coc#refresh()", { silent = true, expr = true })
-vim.api.nvim_set_keymap("i", "<TAB>", "pumvisible() ? '<C-n>' : '<TAB>'", {noremap = true, silent = true, expr = true})
-vim.api.nvim_set_keymap("i", "<S-TAB>", "pumvisible() ? '<C-p>' : '<C-h>'", {noremap = true, expr = true})
-vim.api.nvim_set_keymap("i", "<CR>", "pumvisible() ? coc#_select_confirm() : '<C-G>u<CR><C-R>=coc#on_enter()<CR>'", {silent = true, expr = true, noremap = true})
+vim.api.nvim_set_keymap("i", "<c-space>", "coc#refresh()", { silent = true, expr = true })
