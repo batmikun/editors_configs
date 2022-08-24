@@ -17,18 +17,15 @@ nnoremap("<leader>nv", "<cmd>:Ex<CR>")
 nnoremap("gd", "<Plug>(coc-definition)")
 nnoremap("K", ":call CocActionAsync('doHover')<CR>", {silent = true, noremap = true})
 nnoremap("<leader>.", "<Plug>(coc-codeaction)")
+
 -- INSERT MODE REMAP -- 
 
 -- VIM COMMANDS
-inoremap("jk", "<escape>")
 inoremap("kj", "<escape>")
-
 -- COC COMMANDS
 inoremap("<CR>", "coc#pum#visible() ? coc#pum#confirm() : '<CR>'", {silent = true, expr = true})
 inoremap("<c-space>", "coc#refresh()", {expr = true, silent = true})
 
 -- VISUAL MODE REMAP --
 
--- VIM COMMANDS
-vnoremap("jj", "<escape")
 
