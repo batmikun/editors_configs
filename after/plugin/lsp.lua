@@ -14,8 +14,57 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
 end  
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+  local cmp = require'cmp'
+
+  cmp.setup({
+    snippet = {
+      expand = function(args)
+        vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+      end,
+    },
+    mapping = cmp.mapping.preset.insert({
+      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      ['<C-Space>'] = cmp.mapping.complete(),
+      ['<C-e>'] = cmp.mapping.abort(),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    }),
+    sources = cmp.config.sources({
+      { name = 'nvim_lsp' },
+      { name = 'vsnip' }, -- For vsnip users.
+    }, {
+      { name = 'buffer' },
+    })
+  })
+
+  -- Set configuration for specific filetype.
+  cmp.setup.filetype('gitcommit', {
+    sources = cmp.config.sources({
+      { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
+    }, {
+      { name = 'buffer' },
+    })
+  })
+
+  -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline('/', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+      { name = 'buffer' }
+    }
+  })
+
+  -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+      { name = 'path' }
+    }, {
+      { name = 'cmdline' }
+    })
+  })
+
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local lsp_flags = {
   -- This is the default in Nvim 0.7+
@@ -24,20 +73,20 @@ local lsp_flags = {
 
 local lspconfig = require('lspconfig')
 
--- PYTHON
+-- PYTHON  npm i -g pyright
 lspconfig.pyright.setup{
     on_attach = on_attach,
     flags = lsp_flags,
     capabilities = capabilities,
 }
 
--- C LANG
+-- C LANG Download llvm
 lspconfig.clangd.setup{
     on_attach = on_attach,
     flags = lsp_flags,
     capabilities = capabilities,
 }
--- RUST
+-- RUST https://github.com/rust-lang/rust-analyzer/releases -> change extension -> add to path
 local opts = {
     tools = {
         autoSetHints = true,
@@ -74,7 +123,7 @@ local opts = {
 
 require('rust-tools').setup(opts)
 
--- ELIXIR
+-- ELIXIR https://github.com/elixir-lsp/elixir-ls
 lspconfig.elixirls.setup{
     on_attach = on_attach,
     flags = lsp_flags,
@@ -89,33 +138,9 @@ lspconfig.ols.setup{
     capabilities = capabilities,
 }
 
--- nvim-cmp setup
-local cmp = require 'cmp'
-cmp.setup {
-  mapping = cmp.mapping.preset.insert({
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<CR>'] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
-    },
-    ['<Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      else
-        fallback()
-      end
-    end, { 'i', 's' }),
-    ['<S-Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      else
-        fallback()
-      end
-    end, { 'i', 's' }),
-  }),
-  sources = {
-    { name = 'nvim_lsp' },
-  },
+-- TYPESCRIPT
+lspconfig.tsserver.setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+    capabilities = capabilities,
 }
