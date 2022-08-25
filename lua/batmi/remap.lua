@@ -16,6 +16,7 @@ nnoremap("<leader>nv", "<cmd>:Ex<CR>")
 -- COC COMMANDS
 nnoremap("gd", "<Plug>(coc-definition)")
 nnoremap("gr", "<Plug>(coc-references)", {silent = true})
+nnoremap("gi", "<Plug>(coc-implementation)", {silent = true})
 nnoremap("K", ":call CocActionAsync('doHover')<CR>", {silent = true, noremap = true})
 nnoremap("<leader>.", "<Plug>(coc-codeaction)")
 
