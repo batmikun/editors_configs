@@ -38,11 +38,41 @@ lspconfig.clangd.setup{
     capabilities = capabilities,
 }
 -- RUST
-lspconfig.rust_analyzer.setup{
-    on_attach = on_attach,
-    flags = lsp_flags,
-    capabilities = capabilities,
+local opts = {
+    tools = {
+        autoSetHints = true,
+        hover_with_actions = true,
+        inlay_hints = {
+            show_parameter_hints = true,
+            parameter_hints_prefix = "",
+            other_hints_prefix = "",
+        },
+    },
+    server = {
+        settings = {
+            ["rust-analyzer"] = {
+                assist = {
+                    importEnforceGranularity = true,
+                    importPrefix = "crate"
+                },
+                cargo = {
+                    allFeatures = true
+                },
+                checkOnSave = {
+                    command = "clippy"
+                },
+            },
+            inlayHints = {
+                lifetimeElisionHints = {
+                    enable = true,
+                    useParameterNames = true
+                },
+            },
+        }
+    },
 }
+
+require('rust-tools').setup(opts)
 
 -- ELIXIR
 lspconfig.elixirls.setup{

@@ -29,4 +29,7 @@ return require('packer').startup(function(use)
     use 'hrsh7th/nvim-cmp'
     -- AUTOCOMPLETION SOURCES
     use 'hrsh7th/cmp-nvim-lsp'
+
+    -- RUST
+    use 'simrat39/rust-tools.nvim'
 end)
