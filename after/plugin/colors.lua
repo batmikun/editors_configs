@@ -6,7 +6,6 @@ local function set_color_theme()
         integrations = {
             telescope = true
         },
-        coc_nvim = true,
     })
 
     vim.cmd [[colorscheme catppuccin]]

@@ -22,8 +22,11 @@ return require('packer').startup(function(use)
             require('gitsigns').setup()
         end
     }
-
-    -- COC VIM PLUGIN [ LSP ]
-    use { 'neoclide/coc.nvim', branch = 'release' }
-
+    
+    -- LSP SERVER
+    use 'neovim/nvim-lspconfig'
+    -- AUTOCOMPLETION
+    use 'hrsh7th/nvim-cmp'
+    -- AUTOCOMPLETION SOURCES
+    use 'hrsh7th/cmp-nvim-lsp'
 end)

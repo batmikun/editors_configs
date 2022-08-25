@@ -13,20 +13,11 @@ nnoremap("<leader>fb", "<cmd>:Telescope buffers<CR>")
 nnoremap("<leader>fg", "<cmd>:Telescope live_grep<CR>")
 -- EX COMMANDS
 nnoremap("<leader>nv", "<cmd>:Ex<CR>")
--- COC COMMANDS
-nnoremap("gd", "<Plug>(coc-definition)")
-nnoremap("gr", "<Plug>(coc-references)", {silent = true})
-nnoremap("gi", "<Plug>(coc-implementation)", {silent = true})
-nnoremap("K", ":call CocActionAsync('doHover')<CR>", {silent = true, noremap = true})
-nnoremap("<leader>.", "<Plug>(coc-codeaction)")
 
 -- INSERT MODE REMAP -- 
 
 -- VIM COMMANDS
 inoremap("kj", "<escape>")
--- COC COMMANDS
-inoremap("<CR>", "coc#pum#visible() ? coc#pum#confirm() : '<CR>'", {silent = true, expr = true})
-inoremap("<c-space>", "coc#refresh()", {expr = true, silent = true})
 
 -- VISUAL MODE REMAP --
 
