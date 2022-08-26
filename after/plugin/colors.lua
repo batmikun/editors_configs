@@ -4,7 +4,23 @@ local function set_color_theme()
 
     require("catppuccin").setup({
         integrations = {
-            telescope = true
+            telescope = true,
+            native_lsp = {
+                enabled = true,
+                virtual_text = {
+                    errors = { "italic" },
+                    hints = { "italic" },
+                    warnings = { "italic" },
+                    information = { "italic" },
+                },
+                underlines = {
+				    errors = { "underline" },
+				    hints = { "underline" },
+				    warnings = { "underline" },
+				    information = { "underline" },
+			    },  
+            },
+            treesitter = true,
         },
     })
 

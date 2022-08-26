@@ -3,10 +3,10 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
     -- THINGS THAT PLUGIN NEED
-    use("nvim-lua/plenary.nvim")
+    use "nvim-lua/plenary.nvim"
 
     -- TELESCOPE FUZZY FINDER
-    use("nvim-telescope/telescope.nvim")
+    use "nvim-telescope/telescope.nvim"
 
     -- COLORSCHEME SECTION
     use { "catppuccin/nvim", as = "catppuccin" }
@@ -23,10 +23,15 @@ return require('packer').startup(function(use)
         end
     }
     
+    -- HIGHLIGHT IMPROVED
+    use 'nvim-treesitter/nvim-treesitter'
+
     -- LSP SERVER
     use 'neovim/nvim-lspconfig'
+
     -- AUTOCOMPLETION
     use 'hrsh7th/nvim-cmp'
+
     -- AUTOCOMPLETION SOURCES
     use 'hrsh7th/cmp-nvim-lsp'
     use 'hrsh7th/cmp-buffer'

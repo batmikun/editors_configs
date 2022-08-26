@@ -90,7 +90,6 @@ lspconfig.clangd.setup{
 local opts = {
     tools = {
         autoSetHints = true,
-        hover_with_actions = true,
         inlay_hints = {
             show_parameter_hints = true,
             parameter_hints_prefix = "",
@@ -143,4 +142,34 @@ lspconfig.tsserver.setup{
     on_attach = on_attach,
     flags = lsp_flags,
     capabilities = capabilities,
+}
+
+-- GOLANG https://github.com/golang/tools/tree/master/gopls
+lspconfig.gopls.setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+    capabilities = capabilities,
+}
+
+-- LUA  
+require'lspconfig'.sumneko_lua.setup {
+    on_attach = on_attach,
+    flags = lsp_flags,
+    capabilities = capabilities,
+    settings = {
+        Lua = {
+            runtime = {
+            version = 'LuaJIT',
+        },
+        diagnostics = {
+            globals = {'vim'},
+        },
+        workspace = {
+            library = vim.api.nvim_get_runtime_file("", true),
+        },
+        telemetry = {
+            enable = false,
+        },
+    },
+  },
 }
