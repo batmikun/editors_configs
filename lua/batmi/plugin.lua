@@ -23,6 +23,15 @@ return require('packer').startup(function(use)
         end
     }
     
+    -- PAIRS
+    use {
+        'windwp/nvim-autopairs',
+        config = function()
+            require('nvim-autopairs').setup()
+        end
+    }
+
+
     -- HIGHLIGHT IMPROVED
     use 'nvim-treesitter/nvim-treesitter'
 
