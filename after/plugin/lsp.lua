@@ -1,8 +1,3 @@
-local opts = { noremap=true, silent=true }
-vim.keymap.set('n', '<C-x>d', vim.diagnostic.open_float, opts)
-vim.keymap.set('n', '<C-x>p', vim.diagnostic.goto_prev, opts)
-vim.keymap.set('n', '<C-x>n', vim.diagnostic.goto_next, opts)
-
 local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -17,7 +12,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
   vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
-end  
+end
 
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 local cmp = require'cmp'
@@ -101,7 +96,7 @@ lspconfig.clangd.setup{
     capabilities = capabilities,
 }
 -- RUST https://github.com/rust-lang/rust-analyzer/releases -> change extension -> add to path
-local opts = {
+local options = {
     tools = {
         autoSetHints = true,
         inlay_hints = {
@@ -134,7 +129,7 @@ local opts = {
     },
 }
 
-require('rust-tools').setup(opts)
+require('rust-tools').setup(options)
 
 -- ELIXIR https://github.com/elixir-lsp/elixir-ls
 lspconfig.elixirls.setup{
