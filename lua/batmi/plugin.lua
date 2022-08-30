@@ -38,6 +38,10 @@ return require('packer').startup(function(use)
     -- LSP SERVER
     use 'neovim/nvim-lspconfig'
 
+    -- LSP UTILS [ IMPROVES CERTAIN FUNCTIONALLITY ]
+    use 'RishabhRD/popfix'
+    use 'RishabhRD/nvim-lsputils'
+
     -- AUTOCOMPLETION
     use 'hrsh7th/nvim-cmp'
 

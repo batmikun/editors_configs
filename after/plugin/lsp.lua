@@ -194,9 +194,27 @@ lspconfig.sumneko_lua.setup {
     },
 }
 
--- HTML https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#html
+-- HTML & CSS & JSON & ESLINT npm i -g vscode-langservers-extracted 
 lspconfig.html.setup{
     on_attach = on_attach,
     flags = lsp_flags,
     capabilities = cmp_capabilities,
+}
+
+lspconfig.cssls.setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+    capabilities = capabilities,
+}
+
+lspconfig.jsonls.setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+    capabilities = capabilities,
+}
+
+lspconfig.eslint.setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+    capabilities = capabilities,
 }
