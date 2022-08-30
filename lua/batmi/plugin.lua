@@ -58,4 +58,10 @@ return require('packer').startup(function(use)
 
     -- EMMET
     use 'mattn/emmet-vim'
+
+    -- SHOW FUNC SIGNATURE
+    use {
+        "ray-x/lsp_signature.nvim",
+    }
+
 end)
