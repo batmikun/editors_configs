@@ -22,7 +22,7 @@ return require('packer').startup(function(use)
             require('gitsigns').setup()
         end
     }
-    
+
     -- PAIRS
     use {
         'windwp/nvim-autopairs',
@@ -51,6 +51,11 @@ return require('packer').startup(function(use)
     use 'hrsh7th/vim-vsnip'
     use 'hrsh7th/cmp-vsnip'
 
-    -- RUST
+    -- RUST EXTENSION
     use 'simrat39/rust-tools.nvim'
+    -- C EXTENSION
+    use 'p00f/clangd_extensions.nvim'
+
+    -- EMMET
+    use 'mattn/emmet-vim'
 end)

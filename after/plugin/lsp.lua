@@ -33,14 +33,26 @@ cmp.setup({
       ['<S-TAB>'] = cmp.mapping.select_prev_item(),
       ['<C-Space>'] = cmp.mapping.complete(),
       ['<C-e>'] = cmp.mapping.abort(),
-      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+      ['<CR>'] = cmp.mapping.confirm({ select = true }),
     }),
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
       { name = 'vsnip' }, -- For vsnip users.
     }, {
       { name = 'buffer' },
-    })
+    }),
+    sorting = {
+        comparators = {
+            cmp.config.compare.offset,
+            cmp.config.compare.exact,
+            cmp.config.compare.recently_used,
+            require("clangd_extensions.cmp_scores"),
+            cmp.config.compare.kind,
+            cmp.config.compare.sort_text,
+            cmp.config.compare.length,
+            cmp.config.compare.order,
+        },
+    },
 })
 
   -- Set configuration for specific filetype.
@@ -73,7 +85,9 @@ cmp.setup.cmdline(':', {
     )
 })
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+local cmp_capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 local lsp_flags = {
   -- This is the default in Nvim 0.7+
@@ -86,15 +100,9 @@ local lspconfig = require('lspconfig')
 lspconfig.pyright.setup{
     on_attach = on_attach,
     flags = lsp_flags,
-    capabilities = capabilities,
+    capabilities = cmp_capabilities,
 }
 
--- C LANG Download llvm
-lspconfig.clangd.setup{
-    on_attach = on_attach,
-    flags = lsp_flags,
-    capabilities = capabilities,
-}
 -- RUST https://github.com/rust-lang/rust-analyzer/releases -> change extension -> add to path
 local options = {
     tools = {
@@ -129,42 +137,45 @@ local options = {
     },
 }
 
+-- RUST EXTENSION
 require('rust-tools').setup(options)
+-- CLANG EXTENSION
+require('clangd_extensions').setup()
 
 -- ELIXIR https://github.com/elixir-lsp/elixir-ls
 lspconfig.elixirls.setup{
     on_attach = on_attach,
     flags = lsp_flags,
     cmd = { "C:\\Users\\batmi\\.elixir-ls\\language-server.bat" },
-    capabilities = capabilities,
+    capabilities = cmp_capabilities,
 }
 
--- ODIN
+-- ODIN https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#ols
 lspconfig.ols.setup{
     on_attach = on_attach,
     flags = lsp_flags,
-    capabilities = capabilities,
+    capabilities = cmp_capabilities,
 }
 
--- TYPESCRIPT
+-- TYPESCRIPT npm install -g typescript typescript-language-server
 lspconfig.tsserver.setup{
     on_attach = on_attach,
     flags = lsp_flags,
-    capabilities = capabilities,
+    capabilities = cmp_capabilities,
 }
 
 -- GOLANG https://github.com/golang/tools/tree/master/gopls
 lspconfig.gopls.setup{
     on_attach = on_attach,
     flags = lsp_flags,
-    capabilities = capabilities,
+    capabilities = cmp_capabilities,
 }
 
--- LUA  
+-- LUA https://github.com/sumneko/lua-language-server 
 lspconfig.sumneko_lua.setup {
     on_attach = on_attach,
     flags = lsp_flags,
-    capabilities = capabilities,
+    capabilities = cmp_capabilities,
     settings = {
         Lua = {
             runtime = {
@@ -181,4 +192,11 @@ lspconfig.sumneko_lua.setup {
             },
         },
     },
+}
+
+-- HTML https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#html
+lspconfig.html.setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+    capabilities = cmp_capabilities,
 }
