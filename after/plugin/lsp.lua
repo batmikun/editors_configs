@@ -4,7 +4,7 @@ local on_attach = function(client, bufnr)
   local bufopts = { noremap=true, silent=true, buffer=bufnr }
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+  vim.keymap.set('n', '<K>', vim.lsp.buf.hover, bufopts)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
   vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
   vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
@@ -85,26 +85,22 @@ cmp.setup.cmdline(':', {
     )
 })
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-local cmp_capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-
-local lsp_flags = {
-  -- This is the default in Nvim 0.7+
-  debounce_text_changes = 150,
-}
+local cmp_capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()
+)
 
 local lspconfig = require('lspconfig')
 
 -- PYTHON  npm i -g pyright
 lspconfig.pyright.setup{
     on_attach = on_attach,
-    flags = lsp_flags,
     capabilities = cmp_capabilities,
 }
 
 -- RUST https://github.com/rust-lang/rust-analyzer/releases -> change extension -> add to path
-local options = {
+-- Rust Extension Pack
+local rt = require("rust-tools")
+
+rt.setup({
     tools = {
         autoSetHints = true,
         inlay_hints = {
@@ -114,7 +110,13 @@ local options = {
         },
     },
     server = {
-        settings = {
+        on_attach = function(_, bufnr)
+            -- Hover actions
+            vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+            -- Code action groups
+            vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+        end,
+       settings = {
             ["rust-analyzer"] = {
                 assist = {
                     importEnforceGranularity = true,
@@ -134,18 +136,16 @@ local options = {
                 },
             },
         }
-    },
-}
 
--- RUST EXTENSION
-require('rust-tools').setup(options)
+    },
+})
+
 -- CLANG EXTENSION
 require('clangd_extensions').setup()
 
 -- ELIXIR https://github.com/elixir-lsp/elixir-ls
 lspconfig.elixirls.setup{
     on_attach = on_attach,
-    flags = lsp_flags,
     cmd = { "C:\\Users\\batmi\\.elixir-ls\\language-server.bat" },
     capabilities = cmp_capabilities,
 }
@@ -153,28 +153,24 @@ lspconfig.elixirls.setup{
 -- ODIN https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#ols
 lspconfig.ols.setup{
     on_attach = on_attach,
-    flags = lsp_flags,
     capabilities = cmp_capabilities,
 }
 
 -- TYPESCRIPT npm install -g typescript typescript-language-server
 lspconfig.tsserver.setup{
     on_attach = on_attach,
-    flags = lsp_flags,
     capabilities = cmp_capabilities,
 }
 
 -- GOLANG https://github.com/golang/tools/tree/master/gopls
 lspconfig.gopls.setup{
     on_attach = on_attach,
-    flags = lsp_flags,
     capabilities = cmp_capabilities,
 }
 
 -- LUA https://github.com/sumneko/lua-language-server 
 lspconfig.sumneko_lua.setup {
     on_attach = on_attach,
-    flags = lsp_flags,
     capabilities = cmp_capabilities,
     settings = {
         Lua = {
@@ -195,26 +191,27 @@ lspconfig.sumneko_lua.setup {
 }
 
 -- HTML & CSS & JSON & ESLINT npm i -g vscode-langservers-extracted 
+
+local cap = vim.lsp.protocol.make_client_capabilities()
+cap.textDocument.completion.completionItem.snippetSupport = true
+local cmp_cap= require('cmp_nvim_lsp').update_capabilities(cap)
+
 lspconfig.html.setup{
     on_attach = on_attach,
-    flags = lsp_flags,
-    capabilities = cmp_capabilities,
+    capabilities = cmp_cap,
 }
 
 lspconfig.cssls.setup{
     on_attach = on_attach,
-    flags = lsp_flags,
-    capabilities = capabilities,
+    capabilities = cmp_cap,
 }
 
 lspconfig.jsonls.setup{
     on_attach = on_attach,
-    flags = lsp_flags,
-    capabilities = capabilities,
+    capabilities = cmp_cap,
 }
 
 lspconfig.eslint.setup{
     on_attach = on_attach,
-    flags = lsp_flags,
-    capabilities = capabilities,
+    capabilities = cmp_cap,
 }

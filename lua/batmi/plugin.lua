@@ -4,6 +4,7 @@ return require('packer').startup(function(use)
 
     -- THINGS THAT PLUGIN NEED
     use "nvim-lua/plenary.nvim"
+    use 'mfussenegger/nvim-dap'
 
     -- TELESCOPE FUZZY FINDER
     use "nvim-telescope/telescope.nvim"
@@ -31,16 +32,11 @@ return require('packer').startup(function(use)
         end
     }
 
-
     -- HIGHLIGHT IMPROVED
     use 'nvim-treesitter/nvim-treesitter'
 
     -- LSP SERVER
     use 'neovim/nvim-lspconfig'
-
-    -- LSP UTILS [ IMPROVES CERTAIN FUNCTIONALLITY ]
-    use 'RishabhRD/popfix'
-    use 'RishabhRD/nvim-lsputils'
 
     -- AUTOCOMPLETION
     use 'hrsh7th/nvim-cmp'
