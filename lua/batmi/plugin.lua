@@ -4,7 +4,11 @@ return require('packer').startup(function(use)
 
     -- THINGS THAT PLUGIN NEED
     use "nvim-lua/plenary.nvim"
+
+    -- DEBUG
     use 'mfussenegger/nvim-dap'
+    use 'leoluz/nvim-dap-go'
+    use 'mfussenegger/nvim-dap-python'
 
     -- TELESCOPE FUZZY FINDER
     use "nvim-telescope/telescope.nvim"
@@ -38,6 +42,17 @@ return require('packer').startup(function(use)
     -- LSP SERVER
     use 'neovim/nvim-lspconfig'
 
+    -- BETTER DIAGNOSTICS
+    use {
+        "folke/trouble.nvim",
+        requires = "kyazdani42/nvim-web-devicons",
+        config = function()
+            require("trouble").setup {}
+        end
+    }
+    use 'jose-elias-alvarez/null-ls.nvim'
+
+
     -- AUTOCOMPLETION
     use 'hrsh7th/nvim-cmp'
 
@@ -59,9 +74,5 @@ return require('packer').startup(function(use)
     -- EMMET
     use 'mattn/emmet-vim'
 
-    -- SHOW FUNC SIGNATURE
-    use {
-        "ray-x/lsp_signature.nvim",
-    }
-
+    use 'hrsh7th/cmp-nvim-lsp-signature-help'
 end)

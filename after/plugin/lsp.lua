@@ -1,13 +1,6 @@
 local on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-    require "lsp_signature".on_attach({
-      bind = true, -- This is mandatory, otherwise border config won't get registered.
-      handler_opts = {
-        border = "rounded"
-      }
-    }, bufnr)
-
     local bufopts = { noremap=true, silent=true, buffer=bufnr }
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
@@ -35,6 +28,10 @@ cmp.setup({
         vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
       end,
     },
+    window = {
+      completion = cmp.config.window.bordered(),
+      documentation = cmp.config.window.bordered(),
+    },
     mapping = cmp.mapping.preset.insert({
       ['<TAB>'] = cmp.mapping.select_next_item(),
       ['<S-TAB>'] = cmp.mapping.select_prev_item(),
@@ -45,6 +42,7 @@ cmp.setup({
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
       { name = 'vsnip' }, -- For vsnip users.
+      { name = 'nvim_lsp_signature_help' }
     }, {
       { name = 'buffer' },
     }),
