@@ -32,6 +32,7 @@ local function set_color_theme()
 				    information = { "underline" },
 			    },
             },
+            lsp_trouble = true,
             treesitter = true,
         },
     })
