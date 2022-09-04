@@ -14,11 +14,11 @@ nnoremap("<leader>fg", "<cmd>:Telescope live_grep<CR>")
 -- EX COMMANDS
 nnoremap("<leader>nv", "<cmd>:Ex<CR>")
 
--- INSERT MODE REMAP -- 
+-- INSERT MODE REMAP --
 
 -- VIM COMMANDS
 inoremap("kj", "<escape>")
 
 -- VISUAL MODE REMAP --
 
-
+require("leap").set_default_keymaps()

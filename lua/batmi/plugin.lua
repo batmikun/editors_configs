@@ -5,11 +5,6 @@ return require("packer").startup(function(use)
 	-- THINGS THAT PLUGIN NEED
 	use("nvim-lua/plenary.nvim")
 
-	-- DEBUG
-	use("mfussenegger/nvim-dap")
-	use("leoluz/nvim-dap-go")
-	use("mfussenegger/nvim-dap-python")
-
 	-- TELESCOPE FUZZY FINDER
 	use("nvim-telescope/telescope.nvim")
 
@@ -38,6 +33,9 @@ return require("packer").startup(function(use)
 
 	-- HIGHLIGHT IMPROVED
 	use("nvim-treesitter/nvim-treesitter")
+
+	-- MOTIONS IMPROVED
+	use("ggandor/leap.nvim")
 
 	-- LSP SERVER
 	use("neovim/nvim-lspconfig")

@@ -34,6 +34,7 @@ local function set_color_theme()
 				},
 			},
 			lsp_trouble = true,
+			leap = true,
 			treesitter = true,
 		},
 	})
