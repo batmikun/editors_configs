@@ -5,6 +5,7 @@ local function set_color_theme()
 	colors.none = "NONE"
 
 	require("catppuccin").setup({
+		transparent_background = true,
 		custom_highlights = {
 			Comment = { fg = colors.overlay1 },
 			LineNr = { fg = colors.overlay1 },
