@@ -94,6 +94,17 @@ lspconfig.pyright.setup({
 	capabilities = cmp_capabilities,
 })
 
+-- HASKELL POWERSHELL :
+-- Install GHCUP -> Set-ExecutionPolicy Bypass -Scope Process -Force;[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;Invoke-Command -ScriptBlock ([ScriptBlock]::Create((Invoke-WebRequest https://www.haskell.org/ghcup/sh/bootstrap-haskell.ps1 -UseBasicParsing))) -ArgumentList $true
+-- ghcup install ghc 9.2.1
+-- ghcup set ghc 9.2.1
+-- create $HOME/.stack/global-project/stack.yaml add resolver:
+-- stack config set resolver ghc-9.2.1
+lspconfig.hls.setup({
+	on_attach = on_attach,
+	capabilities = cmp_capabilities,
+})
+
 -- RUST https://github.com/rust-lang/rust-analyzer/releases -> change extension -> add to path
 -- Rust Extension Pack
 local rt = require("rust-tools")
