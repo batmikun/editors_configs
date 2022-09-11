@@ -1,76 +1,79 @@
 return require("packer").startup(function(use)
-	-- Packer can manage itself
-	use("wbthomason/packer.nvim")
+    -- Packer can manage itself
+    use("wbthomason/packer.nvim")
 
-	-- THINGS THAT PLUGIN NEED
-	use("nvim-lua/plenary.nvim")
+    -- THINGS THAT PLUGIN NEED
+    use("nvim-lua/plenary.nvim")
 
-	-- TELESCOPE FUZZY FINDER
-	use("nvim-telescope/telescope.nvim")
+    -- BETTER NOTIFICATIONS
+    use("rcarriga/nvim-notify")
 
-	-- COLORSCHEME SECTION
-	use({ "catppuccin/nvim", as = "catppuccin" })
+    -- TELESCOPE FUZZY FINDER
+    use("nvim-telescope/telescope.nvim")
 
-	-- STATUS BAR
-	use("feline-nvim/feline.nvim")
-	use("kyazdani42/nvim-web-devicons")
+    -- COLORSCHEME SECTION
+    use({ "catppuccin/nvim", as = "catppuccin" })
 
-	-- GIT PLUGINS
-	use({
-		"lewis6991/gitsigns.nvim",
-		config = function()
-			require("gitsigns").setup()
-		end,
-	})
+    -- STATUS BAR
+    use("feline-nvim/feline.nvim")
+    use("kyazdani42/nvim-web-devicons")
 
-	-- PAIRS
-	use({
-		"windwp/nvim-autopairs",
-		config = function()
-			require("nvim-autopairs").setup()
-		end,
-	})
+    -- GIT PLUGINS
+    use({
+        "lewis6991/gitsigns.nvim",
+        config = function()
+            require("gitsigns").setup()
+        end,
+    })
 
-	-- HIGHLIGHT IMPROVED
-	use("nvim-treesitter/nvim-treesitter")
+    -- PAIRS
+    use({
+        "windwp/nvim-autopairs",
+        config = function()
+            require("nvim-autopairs").setup()
+        end,
+    })
 
-	-- MOTIONS IMPROVED
-	use("ggandor/leap.nvim")
+    -- HIGHLIGHT IMPROVED
+    use("nvim-treesitter/nvim-treesitter")
 
-	-- LSP SERVER
-	use("neovim/nvim-lspconfig")
+    -- MOTIONS IMPROVED
+    use("ggandor/leap.nvim")
 
-	-- BETTER DIAGNOSTICS
-	use({
-		"folke/trouble.nvim",
-		requires = "kyazdani42/nvim-web-devicons",
-		config = function()
-			require("trouble").setup({})
-		end,
-	})
-	use("jose-elias-alvarez/null-ls.nvim")
+    -- LSP SERVER
+    use("neovim/nvim-lspconfig")
 
-	-- AUTOCOMPLETION
-	use("hrsh7th/nvim-cmp")
+    -- BETTER DIAGNOSTICS
+    use({
+        "folke/trouble.nvim",
+        requires = "kyazdani42/nvim-web-devicons",
+        config = function()
+            require("trouble").setup({})
+        end,
+    })
+    use("jose-elias-alvarez/null-ls.nvim")
 
-	-- AUTOCOMPLETION SOURCES
-	use("hrsh7th/cmp-nvim-lsp")
-	use("hrsh7th/cmp-buffer")
-	use("hrsh7th/cmp-path")
-	use("hrsh7th/cmp-cmdline")
-	use("hrsh7th/cmp-nvim-lsp-signature-help")
+    -- AUTOCOMPLETION
+    use("hrsh7th/nvim-cmp")
 
-	-- Snippet Engine
-	use("hrsh7th/vim-vsnip")
-	use("hrsh7th/cmp-vsnip")
+    -- AUTOCOMPLETION SOURCES
+    use("hrsh7th/cmp-nvim-lsp")
+    use("hrsh7th/cmp-buffer")
+    use("hrsh7th/cmp-path")
+    use("hrsh7th/cmp-cmdline")
+    use("hrsh7th/cmp-nvim-lsp-signature-help")
 
-	-- RUST EXTENSION
-	use("simrat39/rust-tools.nvim")
-	-- C EXTENSION
-	use("p00f/clangd_extensions.nvim")
-	-- LOVE EXTENSION
-	use("davisdude/vim-love-docs")
+    -- Snippet Engine
+    use("hrsh7th/vim-vsnip")
+    use("hrsh7th/cmp-vsnip")
 
-	-- EMMET
-	use("mattn/emmet-vim")
+    -- RUST EXTENSION
+    use("simrat39/rust-tools.nvim")
+    -- C EXTENSION
+    use("p00f/clangd_extensions.nvim")
+    -- LOVE EXTENSION
+    use("davisdude/vim-love-docs")
+
+    -- EMMET
+    use("mattn/emmet-vim")
 end)
