@@ -3,8 +3,9 @@ local M = {}
 M.general = {
   n = {
     [";"] = { ":", "command mode", opts = { nowait = true } },
-    ["<leader>q"] = { ":q<CR>", "exit neovim"},
-    ["<space>bn"] = {":bn<CR>", "go to next buffer"}
+    ["<leader>q"] = { ":q<CR>", "exit neovim" },
+    ["<space>bn"] = { ":bn<CR>", "go to next buffer" },
+    ["<space>w"] = { ":w<CR>", "Save" },
   },
 
   i = {
@@ -26,12 +27,11 @@ M.treesitter = {
   },
 }
 
-
 M.navigation = {
   n = {
     ["H"] = { "^", "beginning of line" },
     ["L"] = { "$", "end of line" },
-  }
+  },
 }
 
 return M
