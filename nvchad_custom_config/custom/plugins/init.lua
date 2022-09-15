@@ -3,13 +3,6 @@ local overrides = require "custom.plugins.overrides"
 return {
 
   ----------------------------------------- default plugins ------------------------------------------
-
-  ["goolord/alpha-nvim"] = {
-    disable = false,
-    cmd = "Alpha",
-    override_options = overrides.alpha,
-  },
-
   ["neovim/nvim-lspconfig"] = {
     config = function()
       require "plugins.configs.lspconfig"
@@ -35,10 +28,10 @@ return {
   },
 
   --------------------------------------------- custom plugins --------------------------------
-
   -- sintax highlight for odin
-  ["Tetralux/odin.vim"] = {},
-
+  ["Tetralux/odin.vim"] = {
+    after = "nvim-lspconfig",
+  },
   -- autoclose tags in html, jsx only
   ["windwp/nvim-ts-autotag"] = {
     ft = { "html", "javascriptreact" },
@@ -69,30 +62,6 @@ return {
     },
     config = function()
       require "custom.plugins.truezen"
-    end,
-  },
-
-  -- get highlight group under cursor
-  ["nvim-treesitter/playground"] = {
-    cmd = "TSCaptureUnderCursor",
-    config = function()
-      require("nvim-treesitter.configs").setup()
-    end,
-  },
-
-  -- dim inactive windows
-  ["andreadev-it/shade.nvim"] = {
-    module = "shade",
-    config = function()
-      require "custom.plugins.shade"
-    end,
-  },
-
-  -- autosave
-  ["Pocco81/AutoSave.nvim"] = {
-    module = "autosave",
-    config = function()
-      require("autosave").setup()
     end,
   },
 }

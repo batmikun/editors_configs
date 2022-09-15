@@ -80,6 +80,17 @@ M.mason = {
     -- shell
     "shfmt",
     "shellcheck",
+
+    -- rust
+    "rust-analyzer",
+
+    -- python
+    "pyright",
+
+    -- haskell
+
+    -- zig
+    "zls",
   },
 }
 
