@@ -1,0 +1,40 @@
+theme = "solarized_dark"
+
+[editor]
+line-number = "relative"
+scrolloff = 8
+auto-format = true
+idle-timeout = 300
+completion-trigger-len = 3
+true-color = true
+auto-pairs = true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.statusline]
+left = ["mode", "spinner", "file-name"]
+center = ["diagnostics"]
+right = ["position", "file-encoding", "file-type"]
+separator = "|"
+
+[editor.lsp]
+display-messages = true
+
+[editor.file-picker]
+ignore = true
+git-ignore = true
+git-global = true
+git-exclude = true
+
+[editor.indent-guides]
+render = true
+character = "|"
+
+[keys.normal]
+"space" = { w = ":w"} 
+
+[keys.insert]
+j = { k = "normal_mode" }

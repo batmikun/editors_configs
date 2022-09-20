@@ -3,9 +3,7 @@ local M = {}
 M.general = {
   n = {
     [";"] = { ":", "command mode", opts = { nowait = true } },
-    ["<leader>q"] = { ":q<CR>", "exit neovim" },
-    ["<space>bn"] = { ":bn<CR>", "go to next buffer" },
-    ["<space>w"] = { ":w<CR>", "Save" },
+    ["<leader>1"] = { ":q<CR>", "Quit" },
   },
 
   i = {
