@@ -14,6 +14,10 @@ M.treesitter = {
     "c",
     "bash",
     "lua",
+    "rust",
+    "go",
+    "zig",
+    "haskell",
   },
 }
 

@@ -10,7 +10,8 @@ local b = null_ls.builtins
 local sources = {
 
   -- webdev stuff
-  b.formatting.prettier.with { filetypes = { "html", "markdown", "css" } },
+  b.code_actions.eslint_d,
+  b.formatting.prettierd,
 
   -- Lua
   b.formatting.stylua,
@@ -22,21 +23,28 @@ local sources = {
   -- cpp
   b.formatting.clang_format,
   b.formatting.rustfmt,
+
+  -- python
+  b.formatting.autopep8,
+
+  -- go
+  b.formatting.gofumpt,
+  b.formatting.goimports,
 }
 
 null_ls.setup {
-    on_attach = function(client, bufnr)
-		if client.supports_method("textDocument/formatting") then
-			vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-			vim.api.nvim_create_autocmd("BufWritePre", {
-				group = augroup,
-				buffer = bufnr,
-				callback = function()
-					vim.lsp.buf.format({ bufnr = bufnr })
-				end,
-			})
-		end
-	end,
-    debug = true,
-    sources = sources,
+  on_attach = function(client, bufnr)
+    if client.supports_method "textDocument/formatting" then
+      vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        group = augroup,
+        buffer = bufnr,
+        callback = function()
+          vim.lsp.buf.format { bufnr = bufnr }
+        end,
+      })
+    end
+  end,
+  debug = true,
+  sources = sources,
 }

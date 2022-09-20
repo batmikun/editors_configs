@@ -1,4 +1,5 @@
 -- Dynamic terminal padding with/without nvim (for siduck's st only)
+vim.o.relativenumber = true
 
 -- replace string from file
 local function sed(from, to, fname)

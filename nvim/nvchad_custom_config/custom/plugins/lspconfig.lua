@@ -10,13 +10,13 @@ local servers = {
   "html",
   "cssls",
   "emmet_ls",
-  "clangd",
   "jsonls",
   "tsserver",
-  "pyright",
   "hls",
   "rust_analyzer",
   "eslint",
+  "taplo",
+  "pylsp",
 }
 
 for _, lsp in ipairs(servers) do
