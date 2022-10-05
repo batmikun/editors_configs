@@ -1,31 +1,62 @@
 [[language]]
 name = "rust"
+indent = { tab-width = 4, unit = "  " }
 auto-format = true
 
 [[language]]
 name = "python"
+indent = { tab-width = 4, unit = "  " }
+comment-token = "#"
+language-server = { command = "pyright-langserver", args = ["--stdio"] }
 formatter = { command = "black", args = ["--quiet", "-"] }
 auto-format = true
 
 [[language]]
-name = "html"
-formatter = { command = 'prettier', args = ["--parser", "html"] }
-
-[[language]]
-name = "json"
-formatter = { command = 'prettier', args = ["--parser", "json"] }
-
-[[language]]
-name = "css"
-formatter = { command = 'prettier', args = ["--parser", "css"] }
+name = "javascript"
+indent = { tab-width = 4, unit = "  " }
+formatter = { command = 'deno', args = ["fmt", "-", "--ext", "js" ] }
 auto-format = true
 
 [[language]]
-name = "javascript"
-formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+name = "json"
+indent = { tab-width = 4, unit = "  " }
+formatter = { command = 'deno', args = ["fmt", "-", "--ext", "json" ] }
+
+[[language]]
+name = "markdown"
+indent = { tab-width = 4, unit = "  " }
+formatter = { command = 'deno', args = ["fmt", "-", "--ext", "md" ] }
 auto-format = true
 
 [[language]]
 name = "typescript"
-formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+indent = { tab-width = 4, unit = "  " }
+formatter = { command = 'deno', args = ["fmt", "-", "--ext", "ts" ] }
 auto-format = true
+
+[[language]]
+name = "jsx"
+indent = { tab-width = 4, unit = "  " }
+formatter = { command = 'deno', args = ["fmt", "-", "--ext", "jsx" ] }
+auto-format = true
+
+[[language]]
+name = "tsx"
+indent = { tab-width = 4, unit = "  " }
+formatter = { command = 'deno', args = ["fmt", "-", "--ext", "tsx" ] }
+auto-format = true
+
+[[language]]
+name = "odin"
+scope = "scope.odin"
+file-types = ["odin"]
+comment-token = "//"
+indent = { tab-width = 2, unit = " " }
+language-server = { command = "ols" }
+injection-regex = "odin"
+roots = ["ols.json"]
+
+[[language]]
+name = "elm"
+indent = { tab-width = 4, unit = " " }
+formatter = { command = 'elm-format', args = ["-"] }
