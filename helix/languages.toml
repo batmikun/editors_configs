@@ -6,10 +6,11 @@ auto-format = true
 [[language]]
 name = "python"
 indent = { tab-width = 4, unit = "  " }
-comment-token = "#"
+auto-format = true
+roots = ["pyrightconfig.json", "pyproject.toml", "setup.py", "Poetry.lock", "."]
 language-server = { command = "pyright-langserver", args = ["--stdio"] }
 formatter = { command = "black", args = ["--quiet", "-"] }
-auto-format = true
+config = {}
 
 [[language]]
 name = "javascript"
@@ -24,6 +25,7 @@ formatter = { command = 'deno', args = ["fmt", "-", "--ext", "json" ] }
 
 [[language]]
 name = "markdown"
+language-server = { command = "ltex-ls" }
 indent = { tab-width = 4, unit = "  " }
 formatter = { command = 'deno', args = ["fmt", "-", "--ext", "md" ] }
 auto-format = true
@@ -60,3 +62,15 @@ roots = ["ols.json"]
 name = "elm"
 indent = { tab-width = 4, unit = " " }
 formatter = { command = 'elm-format', args = ["-"] }
+
+[[language]]
+name = "html"
+indent = { tab-width = 4, unit = " " }
+
+[[language]]
+name = "html"
+indent = { tab-width = 4, unit = " " }
+
+[[language]]
+name = "svelte"
+indent = { tab-width = 4, unit = " " }
