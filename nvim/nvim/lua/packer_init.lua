@@ -9,6 +9,7 @@
 -- neovim-lua/README.md
 -- https://github.com/brainfucksec/neovim-lua#readme
 
+require('impatient')
 
 -- Automatically install packer
 local fn = vim.fn
@@ -44,6 +45,16 @@ end
 return packer.startup(function(use)
   -- Add you plugins here:
   use 'wbthomason/packer.nvim' -- packer can manage itself
+
+  -- Impatient
+  use 'lewis6991/impatient.nvim'
+
+  -- telescope
+  use {
+  'nvim-telescope/telescope.nvim', tag = '0.1.0',
+-- or                            , branch = '0.1.x',
+  requires = { {'nvim-lua/plenary.nvim'} }
+  }
 
   -- File explorer
   use 'kyazdani42/nvim-tree.lua'
