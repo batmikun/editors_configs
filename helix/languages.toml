@@ -61,15 +61,13 @@ roots = ["ols.json"]
 [[language]]
 name = "elm"
 indent = { tab-width = 4, unit = " " }
-formatter = { command = 'elm-format', args = ["-"] }
+formatter = { command = 'elm-format.exe', args = ["-"] }
+config = {}
 
 [[language]]
 name = "html"
 indent = { tab-width = 4, unit = " " }
-
-[[language]]
-name = "html"
-indent = { tab-width = 4, unit = " " }
+formatter = { command = 'prettier.exe', args = ["--parser", "html"] }
 
 [[language]]
 name = "svelte"
