@@ -107,26 +107,12 @@ Language servers setup:
 For language servers list see:
 https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 
-Language server installed:
-
-Bash          -> bashls
-Python        -> pyright
-C-C++         -> clangd
-HTML/CSS/JSON -> vscode-html-languageserver
-JavaScript/TypeScript -> tsserver
-
 --]]
 
--- Define `root_dir` when needed
--- See: https://github.com/neovim/nvim-lspconfig/issues/320
--- This is a workaround, maybe not work with some servers.
 local root_dir = function()
   return vim.fn.getcwd()
 end
 
--- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches.
--- Add your language server below:
 local servers = { 'elmls', 'pyright', 'hls', 'zls','html', 'cssls', 'tsserver', 'rust_analyzer', 'gopls', 'taplo', 'svelte', 'ols' }
 
 -- Call setup
@@ -144,6 +130,7 @@ for _, lsp in ipairs(servers) do
           }
         }
     end
+
     lspconfig[lsp].setup {
     on_attach = on_attach,
     root_dir = root_dir,
