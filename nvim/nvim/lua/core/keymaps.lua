@@ -60,16 +60,15 @@ map('n', '<leader>q', ':qa!<CR>')
 map('n', '<C-t>', ':Term<CR>', { noremap = true })  -- open
 map('t', '<Esc>', '<C-\\><C-n>')                    -- exit
 
--- NvimTree
-map('n', '<C-n>', ':NvimTreeToggle<CR>')            -- open/close
-map('n', '<leader>f', ':NvimTreeRefresh<CR>')       -- refresh
-map('n', '<leader>n', ':NvimTreeFindFile<CR>')      -- search file
-
 -- Tagbar
 map('n', '<leader>z', ':TagbarToggle<CR>')          -- open/close
 
+-- Telescope
 local builtin = require('telescope.builtin')
-vim.keymap.set('n', 'ff', builtin.find_files, {})
-vim.keymap.set('n', 'fg', builtin.live_grep, {})
-vim.keymap.set('n', 'fb', builtin.buffers, {})
-vim.keymap.set('n', 'fh', builtin.help_tags, {})
+map('n', 'ff', 'builtin.find_files')
+map('n', 'fg', 'builtin.live_grep')
+map('n', 'fb', 'builtin.buffers')
+map('n', 'fh', 'builtin.help_tags')
+
+-- Telescope File Explorer
+map('n', '<leader>v', ':Telescope file_browser<CR>')            -- open

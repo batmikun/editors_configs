@@ -56,9 +56,9 @@ return packer.startup(function(use)
   requires = { {'nvim-lua/plenary.nvim'} }
   }
 
-  -- File explorer
-  use 'kyazdani42/nvim-tree.lua'
-
+  -- File explorer [Telescope Extension]
+  use { "nvim-telescope/telescope-file-browser.nvim" }  
+  
   -- Indent line
   use 'lukas-reineke/indent-blankline.nvim'
 
