@@ -291,16 +291,6 @@ doesn't support (e.g. Packages buffer, eshell, calendar etc.)
     (setq evil-collection-company-use-tng nil)
     (evil-collection-init))
 #+END_SRC
-Emulates tpope's vim commentary package (Use ~gcc~ to comment out a line,
-~gc~ to comment out the target of a motion (for example, ~gcap~ to
-comment out a paragraph), ~gc~ in visual mode to comment out the
-selection etc.)
-#+BEGIN_SRC emacs-lisp
-  (use-package evil-commentary
-    :after evil
-    :diminish
-    :config (evil-commentary-mode +1))
-#+END_SRC
 ** Git Integration
 Tell magit to automatically put us in vi-insert-mode when committing a change.
 #+BEGIN_SRC emacs-lisp

@@ -50,7 +50,8 @@
 (setq select-enable-clipboard t)
 
 ;; line numbers
-(global-display-line-numbers-mode)
+(column-number-mode)
+(global-display-line-numbers-mode t)
 
 ;; Font
 (set-face-attribute 'default nil :font "JetBrainsMono Nerd Font" :height 150)
