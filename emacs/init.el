@@ -1,7 +1,7 @@
 ;;; init.el --- Emacs init file
-;;  Author: Ian Y.E. Pan
+;;  Author: Batmi
 ;;; Commentary:
-;;; A lightweight Emacs config containing only the essentials: shipped with a custom theme!
+;;; A lightweight Emacs config containing only the essentials and integration with LSP
 ;;; Code:
 (defvar file-name-handler-alist-original file-name-handler-alist)
 

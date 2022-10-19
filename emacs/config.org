@@ -20,7 +20,7 @@ indentation width you prefer in the ~web-mode~ section.)
     :preface
     (defvar ian/indent-width 4) ; change this value to your preferred width
     :config
-    (setq frame-title-format '("Yay-Evil") ; Yayyyyy Evil!
+    (setq frame-title-format '("Batmi Evil") ;
           ring-bell-function 'ignore       ; minimize distraction
           frame-resize-pixelwise t
           default-directory "~/")
@@ -115,7 +115,6 @@ Slightly shorten eldoc display delay.
 #+BEGIN_SRC emacs-lisp
   (use-package eldoc
     :ensure nil
-    :diminish eldoc-mode
     :config
     (setq eldoc-idle-delay 0.4))
 #+END_SRC
@@ -234,8 +233,13 @@ Normally, we need to add ~:ensure t~ to tell ~use-package~ to download packages 
 ** GUI enhancements
 *** Load custom theme
 #+BEGIN_SRC emacs-lisp
-  (add-to-list 'custom-theme-load-path (concat user-emacs-directory "themes/"))
-  (load-theme 'wilmersdorf t) ; an orginal theme created by me.
+  (use-package doom-themes
+    :ensure t
+    :config
+    (setq doom-themes-enable-bold t
+      doom-themes-enable-italic t)
+    (load-theme 'doom-one t)
+  )
 #+END_SRC
 *** Dashboard welcome page
 #+BEGIN_SRC emacs-lisp
@@ -264,7 +268,6 @@ editing text (especially code). I also changed the default ~:q~ and
 subsequently killing Emacs.
 #+BEGIN_SRC emacs-lisp
   (use-package evil
-    :diminish undo-tree-mode
     :init
     (setq evil-want-C-u-scroll t
           evil-want-keybinding nil
@@ -328,7 +331,6 @@ purpose.
 Use ~C-n~ and ~C-p~ to navigate the tooltip.
 #+BEGIN_SRC emacs-lisp
   (use-package company
-    :diminish company-mode
     :hook (prog-mode . company-mode)
     :config
     (setq company-minimum-prefix-length 1
@@ -442,18 +444,15 @@ Markdown mode and Web mode, the latter covers our usages of HTML/CSS/JS/JSX/TS/T
     (define-fringe-bitmap 'git-gutter-fr:deleted [128 192 224 240] nil nil 'bottom))
 #+END_SRC
 
-** Miscellaneous
-*** Diminish minor modes
-The diminish package is used to hide unimportant minor modes in the
-modeline. It provides the ~:diminish~ keyword we've been using in
-other use-package declarations.
+*** Doom Modeline
 #+BEGIN_SRC emacs-lisp
-  (use-package diminish
-    :demand t)
+  (use-package doom-modeline
+    :ensure t
+    :init (doom-modeline-mode 1))
 #+END_SRC
-*** Configure PATH on macOS
+
+*** All Icons
 #+BEGIN_SRC emacs-lisp
-  (use-package exec-path-from-shell
-    :config (when (memq window-system '(mac ns x))
-              (exec-path-from-shell-initialize)))
+  (use-package all-the-icons
+    :ensure t)
 #+END_SRC
