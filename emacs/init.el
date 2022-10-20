@@ -3,6 +3,11 @@
 ;;; Commentary:
 ;;; A lightweight Emacs config containing only the essentials and integration with LSP
 ;;; Code:
+
+;; Make startup faster by reducing the frequency of garbage
+;; collection.  The default is 800 kilobytes.  Measured in bytes.
+(setq gc-cons-threshold (* 50 1000 1000))
+
 (defvar file-name-handler-alist-original file-name-handler-alist)
 
 (setq gc-cons-threshold most-positive-fixnum
@@ -57,9 +62,19 @@
 (set-face-attribute 'default nil :font "JetBrainsMono Nerd Font" :height 150)
 (set-frame-font "JetBrainsMono Nerd Font" nil t)
 
+;; Benchamark Init
+(use-package benchmark-init
+  :ensure t
+  :config
+  ;; To disable collection of benchmark data after init is done.
+  (add-hook 'after-init-hook 'benchmark-init/deactivate))
+
 ;; Load main config file "./config.org"
 (require 'org)
 (org-babel-load-file (expand-file-name (concat user-emacs-directory "config.org")))
+
+;; Make gc pauses faster by decreasing the threshold.
+(setq gc-cons-threshold (* 2 1000 1000))
 
 (provide 'init)
 ;;; init.el ends here

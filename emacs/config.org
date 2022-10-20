@@ -200,7 +200,7 @@ of the new-line-and-push-brace feature.
 #+END_SRC
 ** Dired tweaks
 Delete intermediate buffers when navigating through dired.
-#+begin_src emacs-lisp
+#+BEGIN_SRC emacs-lisp
   (use-package dired
     :ensure nil
     :config
@@ -209,7 +209,7 @@ Delete intermediate buffers when navigating through dired.
       #'(lambda ()
           (put 'dired-find-alternate-file 'disabled nil)
           (define-key dired-mode-map (kbd "RET") #'dired-find-alternate-file))))
-#+end_src
+#+END_SRC
 ** Dump custom-set-variables to a garbage file and don't load it
 #+BEGIN_SRC emacs-lisp
   (use-package cus-edit
@@ -234,13 +234,24 @@ Normally, we need to add ~:ensure t~ to tell ~use-package~ to download packages 
 *** Load custom theme
 #+BEGIN_SRC emacs-lisp
   (use-package doom-themes
-    :ensure t
     :config
     (setq doom-themes-enable-bold t
       doom-themes-enable-italic t)
     (load-theme 'doom-one t)
   )
 #+END_SRC
+
+*** Doom Modeline
+#+BEGIN_SRC emacs-lisp
+  (use-package doom-modeline
+    :init (doom-modeline-mode 1))
+#+END_SRC
+
+*** All Icons
+#+BEGIN_SRC emacs-lisp
+  (use-package all-the-icons)
+#+END_SRC
+
 *** Dashboard welcome page
 #+BEGIN_SRC emacs-lisp
   (use-package dashboard
@@ -251,6 +262,7 @@ Normally, we need to add ~:ensure t~ to tell ~use-package~ to download packages 
           dashboard-items nil
           dashboard-set-footer nil))
 #+END_SRC
+
 *** Syntax highlighting
 Lightweight syntax highlighting improvement for numbers and escape
 sequences (e.g. ~\n, \t~).
@@ -261,6 +273,7 @@ sequences (e.g. ~\n, \t~).
   (use-package highlight-escape-sequences
     :hook (prog-mode . hes-mode))
 #+END_SRC
+
 ** Vi keybindings
 I personally find Vi(m) bindings to be the most efficient way of
 editing text (especially code). I also changed the default ~:q~ and
@@ -342,55 +355,40 @@ Use ~C-n~ and ~C-p~ to navigate the tooltip.
     (define-key company-active-map (kbd "C-n") 'company-select-next)
     (define-key company-active-map (kbd "C-p") 'company-select-previous))
 #+END_SRC
+
 *** Flycheck
 A modern on-the-fly syntax checking extension -- absolute essential
 #+BEGIN_SRC emacs-lisp
   (use-package flycheck :config (global-flycheck-mode +1))
 #+END_SRC
-*** Org Mode
-Some minimal org mode tweaks: org-bullets gives our headings (h1, h2,
-h3...) a more visually pleasing look.
-#+BEGIN_SRC emacs-lisp
-  (use-package org
-    :hook ((org-mode . visual-line-mode)
-           (org-mode . org-indent-mode)))
-
-  (use-package org-bullets :hook (org-mode . org-bullets-mode))
-#+END_SRC
-*** Useful major modes
-Markdown mode and Web mode, the latter covers our usages of HTML/CSS/JS/JSX/TS/TSX/JSON.
-#+BEGIN_SRC emacs-lisp
-  (use-package markdown-mode
-    :hook (markdown-mode . visual-line-mode))
-
-  (use-package web-mode
-    :mode (("\\.html?\\'" . web-mode)
-           ("\\.css\\'"   . web-mode)
-           ("\\.jsx?\\'"  . web-mode)
-           ("\\.tsx?\\'"  . web-mode)
-           ("\\.json\\'"  . web-mode))
-    :config
-    (setq web-mode-markup-indent-offset 4) ; HTML
-    (setq web-mode-css-indent-offset 4)    ; CSS
-    (setq web-mode-code-indent-offset 4)   ; JS/JSX/TS/TSX
-    (setq web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'"))))
-#+END_SRC
 
 *** LSP and Compagnon
 #+BEGIN_SRC emacs-lisp
+  (use-package python-mode)
+  (use-package typescript-mode)
+  (use-package web-mode)
+  (use-package markdown-mode)
+  (use-package haskell-mode)
+  (use-package zig-mode)
+  (use-package elm-mode)
+  (use-package rust-mode)
+  (use-package go-mode)
+
+
   (use-package lsp-mode
     :hook ((python-mode      ;
             js-mode          ;
             js-jsx-mode      ;
             typescript-mode  ;
             web-mode         ;
+            markdown-mode
             haskell-mode     ;
             zig-mode         ;
             elm-mode         ;
-            odin-mode        ;
             rust-mode        ;
+            go-mode
             ) . lsp-deferred)
-    :commands lsp
+    :commands (lsp lsp-deffered)
     :config
     (setq lsp-auto-guess-root t)
     (setq lsp-log-io nil)
@@ -407,12 +405,6 @@ Markdown mode and Web mode, the latter covers our usages of HTML/CSS/JS/JSX/TS/T
     (setq lsp-ui-doc-border (face-foreground 'default))
     (setq lsp-ui-sideline-show-code-actions t)
     (setq lsp-ui-sideline-delay 0.05))
-
-  ;; pyright
-  (use-package lsp-pyright
-    :hook (python-mode . (lambda () (require 'lsp-pyright)))
-    :init (when (executable-find "python")
-            (setq lsp-pyright-python-executable-cmd "python")))
 #+END_SRC
 
 *** Formal all plugin
@@ -442,17 +434,4 @@ Markdown mode and Web mode, the latter covers our usages of HTML/CSS/JS/JSX/TS/T
     (define-fringe-bitmap 'git-gutter-fr:added [224] nil nil '(center repeated))
     (define-fringe-bitmap 'git-gutter-fr:modified [224] nil nil '(center repeated))
     (define-fringe-bitmap 'git-gutter-fr:deleted [128 192 224 240] nil nil 'bottom))
-#+END_SRC
-
-*** Doom Modeline
-#+BEGIN_SRC emacs-lisp
-  (use-package doom-modeline
-    :ensure t
-    :init (doom-modeline-mode 1))
-#+END_SRC
-
-*** All Icons
-#+BEGIN_SRC emacs-lisp
-  (use-package all-the-icons
-    :ensure t)
 #+END_SRC
