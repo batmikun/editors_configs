@@ -337,9 +337,15 @@ A modern on-the-fly syntax checking extension -- absolute essential
     :defer t)
 
   (use-package python-mode
-    :defer t
     :config
     (add-hook 'python-mode-hook 'eglot-ensure))
+
+  (use-package auto-virtualenv
+  :init
+  (use-package pyvenv)
+  :config
+  (add-hook 'python-mode-hook 'auto-virtualenv-set-virtualenv)
+  (add-hook 'projectile-after-switch-project-hook 'auto-virtualenv-set-virtualenv))  ;; If using projectile
 
   (use-package typescript-mode
     :defer t
@@ -409,4 +415,11 @@ A modern on-the-fly syntax checking extension -- absolute essential
     (define-fringe-bitmap 'git-gutter-fr:added [224] nil nil '(center repeated))
     (define-fringe-bitmap 'git-gutter-fr:modified [224] nil nil '(center repeated))
     (define-fringe-bitmap 'git-gutter-fr:deleted [128 192 224 240] nil nil 'bottom))
+#+END_SRC
+
+*** Configure PATH on macOS
+#+BEGIN_SRC emacs-lisp
+(use-package exec-path-from-shell
+  :config (when (memq window-system '(mac ns x))
+            (exec-path-from-shell-initialize)))
 #+END_SRC
