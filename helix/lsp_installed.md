@@ -1,5 +1,9 @@
 # LSP SERVERS INSTALL INSTRUCTIONS
 
+## Clangd + llbd debugger
+
+[clangd + llbd]https://github.com/llvm/llvm-project/releases/tag/llvmorg-15.0.2 -> LLVM-15.0.2-win64.exe
+
 ## TypeScript
 
 ```console
@@ -62,7 +66,9 @@ npm install -g elm elm-test elm-format @elm-tooling/elm-language-server
 
 ## Go
 
-From this url : https://github.com/golang/tools/tree/master/gopls
+```console
+go install golang.org/x/tools/gopls@latest
+```
 
 ## Haskell
 
