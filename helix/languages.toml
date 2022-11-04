@@ -1,11 +1,13 @@
 [[language]]
 name = "rust"
 indent = { tab-width = 4, unit = "  " }
+max-line-length = 80
 auto-format = true
 
 [[language]]
 name = "python"
 indent = { tab-width = 4, unit = "  " }
+max-line-length = 80
 auto-format = true
 roots = ["pyrightconfig.json", "pyproject.toml", "setup.py", "Poetry.lock", "."]
 language-server = { command = "pyright-langserver", args = ["--stdio"] }
@@ -15,45 +17,52 @@ config = {}
 [[language]]
 name = "javascript"
 indent = { tab-width = 4, unit = "  " }
+max-line-length = 80
 formatter = { command = 'deno', args = ["fmt", "-", "--ext", "js" ] }
 auto-format = true
 
 [[language]]
 name = "json"
 indent = { tab-width = 4, unit = "  " }
+max-line-length = 80
 formatter = { command = 'deno', args = ["fmt", "-", "--ext", "json" ] }
 
 [[language]]
 name = "markdown"
 language-server = { command = "ltex-ls" }
 indent = { tab-width = 4, unit = "  " }
+max-line-length = 80
 formatter = { command = 'deno', args = ["fmt", "-", "--ext", "md" ] }
 auto-format = true
 
 [[language]]
 name = "typescript"
 indent = { tab-width = 4, unit = "  " }
+max-line-length = 80
 formatter = { command = 'deno', args = ["fmt", "-", "--ext", "ts" ] }
 auto-format = true
 
 [[language]]
 name = "jsx"
 indent = { tab-width = 4, unit = "  " }
+max-line-length = 80
 formatter = { command = 'deno', args = ["fmt", "-", "--ext", "jsx" ] }
 auto-format = true
 
 [[language]]
 name = "tsx"
 indent = { tab-width = 4, unit = "  " }
+max-line-length = 80
 formatter = { command = 'deno', args = ["fmt", "-", "--ext", "tsx" ] }
 auto-format = true
 
 [[language]]
 name = "odin"
-scope = "scope.odin"
+scope = "main.odin"
 file-types = ["odin"]
 comment-token = "//"
-indent = { tab-width = 2, unit = " " }
+indent = { tab-width = 4, unit = " " }
+max-line-length = 80
 language-server = { command = "ols" }
 injection-regex = "odin"
 roots = ["ols.json"]
@@ -61,14 +70,12 @@ roots = ["ols.json"]
 [[language]]
 name = "elm"
 indent = { tab-width = 4, unit = " " }
+max-line-length = 80
 formatter = { command = 'elm-format.exe', args = ["-"] }
 config = {}
 
 [[language]]
 name = "html"
 indent = { tab-width = 4, unit = " " }
+max-line-length = 80
 formatter = { command = 'prettier.exe', args = ["--parser", "html"] }
-
-[[language]]
-name = "svelte"
-indent = { tab-width = 4, unit = " " }
