@@ -1,5 +1,10 @@
 # LSP SERVERS INSTALL INSTRUCTIONS
 
+## Astro
+```console
+npm install -g @astrojs/language-server
+```
+
 ## Clangd + llbd debugger
 
 [clangd + llbd]https://github.com/llvm/llvm-project/releases/tag/llvmorg-15.0.2 -> LLVM-15.0.2-win64.exe

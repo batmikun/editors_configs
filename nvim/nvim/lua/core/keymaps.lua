@@ -23,7 +23,7 @@ map('', '<down>', '<nop>')
 map('', '<left>', '<nop>')
 map('', '<right>', '<nop>')
 
--- Map Esc to kk
+-- Map Esc to jk
 map('i', 'jk', '<Esc>')
 
 -- Clear search highlighting with <leader> and c
@@ -64,11 +64,10 @@ map('t', '<Esc>', '<C-\\><C-n>')                    -- exit
 map('n', '<leader>z', ':TagbarToggle<CR>')          -- open/close
 
 -- Telescope
-local builtin = require('telescope.builtin')
-map('n', 'ff', 'builtin.find_files')
-map('n', 'fg', 'builtin.live_grep')
-map('n', 'fb', 'builtin.buffers')
-map('n', 'fh', 'builtin.help_tags')
+map('n', '<leader>ff', ':Telescope find_files<CR>')
+map('n', '<leader>fg', ':Telescope live_grep<CR>')
+map('n', '<leader>fb', ':Telescope buffers<CR>')
+map('n', '<leader>fh', ':Telescope help_tags<CR>')
 
 -- Telescope File Explorer
 map('n', '<leader>v', ':Telescope file_browser<CR>')            -- open

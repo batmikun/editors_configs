@@ -39,7 +39,7 @@ vim.cmd([[
 -- Add additional capabilities supported by nvim-cmp
 -- See: https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
 capabilities.textDocument.completion.completionItem.documentationFormat = { 'markdown', 'plaintext' }
 capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -113,7 +113,7 @@ local root_dir = function()
   return vim.fn.getcwd()
 end
 
-local servers = { 'elmls', 'pyright', 'hls', 'zls','html', 'cssls', 'tsserver', 'rust_analyzer', 'gopls', 'taplo', 'svelte', 'ols' }
+local servers = { 'elmls', 'astro', 'pyright', 'zls', 'html', 'cssls', 'tsserver', 'rust_analyzer', 'gopls', 'taplo', 'ols' }
 
 -- Call setup
 for _, lsp in ipairs(servers) do

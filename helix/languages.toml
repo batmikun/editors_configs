@@ -1,4 +1,12 @@
 [[language]]
+name = "astro"
+indent = { tab-width = 4, unit = "  " }
+max-line-length = 80
+auto-format = true
+language-server = { command = "astro-ls", args = ["--stdio"] }
+
+
+[[language]]
 name = "rust"
 indent = { tab-width = 4, unit = "  " }
 max-line-length = 80
