@@ -4,11 +4,12 @@ local options = vim.opt
 options.swapfile = true
 options.dir = "/tmp"
 options.smartcase = true
-options.laststatus = 2
 options.hlsearch = true
 options.incsearch = true
 options.ignorecase = true
 options.scrolloff = 12
+options.laststatus = 2
+options.showtabline = 2
 options.termguicolors = true
 
 -- window-local options

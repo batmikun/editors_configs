@@ -44,21 +44,22 @@ return packer.startup(function(use)
 	-- Autocomplete
 	use {
 		'hrsh7th/nvim-cmp',
-        after = "nvim-lspconfig",
 		requires = {
-		     	'L3MON4D3/LuaSnip',
-		    	'hrsh7th/cmp-nvim-lsp',
-		    	'hrsh7th/cmp-path',
-        		'hrsh7th/cmp-buffer',
-		    	'saadparwaiz1/cmp_luasnip',
+            'L3MON4D3/LuaSnip',
+            'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-path',
+            'hrsh7th/cmp-buffer',
+            'saadparwaiz1/cmp_luasnip',
 		},
 	}
 
     -- Syntax Highlighting
 	use {
         "nvim-treesitter/nvim-treesitter",
+        requires = {
+            'p00f/nvim-ts-rainbow'
+        },
         run = ":TSUpdate",
-        event = "BufWinEnter",
     }
 
     -- Indent line
@@ -75,6 +76,27 @@ return packer.startup(function(use)
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.0',
         requires = { {'nvim-lua/plenary.nvim'} },
+    }
+
+    -- Status Line
+    use {
+        'tamton-aquib/staline.nvim',
+    }
+
+    -- Autopair
+    use {
+	    "windwp/nvim-autopairs",
+        config = function() require("nvim-autopairs").setup {} end
+    }
+
+    -- Json Schemas
+    use "b0o/schemastore.nvim"
+
+    -- Toggle Term
+    use {
+        "akinsho/toggleterm.nvim",
+        tag = '*',
+        config = function() require("toggleterm").setup() end
     }
 
 end)

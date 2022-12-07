@@ -1,3 +1,5 @@
+local vim = vim
+
 local lsp_status_ok, lspconfig = pcall(require, 'lspconfig')
 if not lsp_status_ok then
   return
@@ -101,7 +103,7 @@ local root_dir = function()
   return vim.fn.getcwd()
 end
 
-local servers = { 'pyright', 'html', 'cssls', 'tsserver', 'rust_analyzer', 'gopls', 'taplo', 'ols', 'sumneko_lua' }
+local servers = { 'jsonls', 'pyright', 'html', 'cssls', 'tsserver', 'rust_analyzer', 'gopls', 'taplo', 'ols', 'sumneko_lua' }
 
 -- Call setup
 for _, lsp in ipairs(servers) do
@@ -115,6 +117,32 @@ for _, lsp in ipairs(servers) do
           flags = {
             debounce_text_changes = 150,
           }
+        }
+    end
+
+    if lsp == 'jsonls' then
+        lspconfig[lsp].setup {
+            on_attach = on_attach,
+            capabilities = capabilities,
+            root_dir = root_dir,
+            flags = {
+                debounce_text_changes = 150,
+            },
+            settings = {
+                json = {
+                    schemas = require('schemastore').json.schemas {
+                        replace = {
+                            ['package.json'] = {
+                                description = 'package.json overriden',
+                                fileMatch = { 'package.json' },
+                                name = 'package.json',
+                                url = 'https://example.com/package.json',
+                            },
+                        },
+                    },
+                    validate = { enable = true },
+                },
+            },
         }
     end
 
