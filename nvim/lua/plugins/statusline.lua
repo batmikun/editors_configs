@@ -1,4 +1,11 @@
-require("staline").setup {
+local status_ok, staline = pcall(require, 'staline')
+if not status_ok then
+    return
+end
+
+local vim = vim
+
+staline.setup {
 	sections = {
 		left = {
 			'▊', ' ', { 'Evil', ' ' }, ' ',         -- The mode and evil sign

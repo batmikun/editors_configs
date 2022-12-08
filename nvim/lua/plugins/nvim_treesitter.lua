@@ -1,4 +1,10 @@
-require'nvim-treesitter.configs'.setup {
+local status_ok, tree_sitter = pcall(require, 'nvim_treesitter.configs')
+if not status_ok then
+    return
+end
+
+
+tree_sitter.setup {
     ensure_installed = { "c", "lua", "rust", "python", "go" },
     sync_install = false,
     auto_install = false,
