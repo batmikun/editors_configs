@@ -9,21 +9,21 @@ if not luasnip_status_ok then
 end
 
 cmp.setup {
-  -- Load snippet support
-  snippet = {
+    -- Load snippet support
+    snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
     end,
-  },
+    },
 
-  -- Completion settings
-  completion = {
+    -- Completion settings
+    completion = {
     --completeopt = 'menu,menuone,noselect'
     keyword_length = 2
-  },
+    },
 
-  -- Key mapping
-  mapping = {
+    -- Key mapping
+    mapping = {
     ['<C-n>'] = cmp.mapping.select_next_item(),
     ['<C-p>'] = cmp.mapping.select_prev_item(),
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
@@ -54,13 +54,14 @@ cmp.setup {
         fallback()
       end
     end
-  },
+    },
 
-  -- Load sources, see: https://github.com/topics/nvim-cmp
-  sources = {
+    -- Load sources, see: https://github.com/topics/nvim-cmp
+    sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
     { name = 'path' },
     { name = 'buffer' },
-  },
+    { name = 'nvim_lsp_signature_help' }
+    },
 }

@@ -1,0 +1,15 @@
+require('plugins')
+require('impatient')
+require('settings')
+require('keymaps')
+
+-- plugins config
+require('plugins/theme')
+require('plugins/lspconfig')
+require('plugins/nvim_cmp')
+require('plugins/telescope')
+require('plugins/statusline')
+require('plugins/nvim_treesitter')
+require('plugins/term')
+require('plugins/feline')
+require('plugins/tabby')

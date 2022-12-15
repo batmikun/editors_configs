@@ -1,13 +1,15 @@
 # LSP SERVERS INSTALL INSTRUCTIONS
 
 ## Astro
+
 ```console
 npm install -g @astrojs/language-server
 ```
 
 ## Clangd + llbd debugger
 
-[clangd + llbd]https://github.com/llvm/llvm-project/releases/tag/llvmorg-15.0.2 -> LLVM-15.0.2-win64.exe
+[clangd + llbd]https://github.com/llvm/llvm-project/releases/tag/llvmorg-15.0.2
+-> LLVM-15.0.2-win64.exe
 
 ## TypeScript
 
@@ -81,26 +83,17 @@ From this url : https://github.com/haskell/haskell-language-server
 
 ## Markdown
 
-From this url : https://valentjn.github.io/ltex/ltex-ls/installation.html
-
-```toml
-[[language]]
-name = "markdown"
-language-server = { command = "ltex-ls" }
-file-types = ["md"]
-scope = "source.markdown"
-roots = []
-```
+https://github.com/artempyanykh/marksman/releases
 
 ## Python
 
-Pylsp
+### Pylsp
 
 ```console
 pipx install 'python-lsp-server[all]'
 ```
 
-Pyright
+### Pyright
 
 ```console
 pip install pyright
@@ -130,6 +123,14 @@ npm install -g svelte-language-server
 cargo install taplo-cli --locked --features lsp
 ```
 
-## Zig
+## Ols [Odin]
+
+From this url : https://github.com/DanielGavin/ols/releases/tag/nightly
+
+## Zls [Zig]
 
 From this url : https://github.com/zigtools/zls
+
+## Sumneko [Lua]
+
+From this url : https://github.com/sumneko/lua-language-server/releases
