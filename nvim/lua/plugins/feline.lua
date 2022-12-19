@@ -307,12 +307,6 @@ local c = {
     end,
     hl = "UserSLAlt",
   },
-  fileinfo = {
-    provider = { name = "file_info", opts = { type = "relative" } },
-    hl = "UserSLAlt",
-    left_sep = { str = " ", hl = "UserSLAltSep" },
-    right_sep = { str = " ", hl = "UserSLAltSep" },
-  },
   file_enc = {
     provider = function()
       local os = icons[vim.bo.fileformat] or ""

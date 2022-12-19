@@ -123,6 +123,29 @@ for _, lsp in ipairs(servers) do
         }
     end
 
+    if lsp == 'sumneko_lua' then
+         lspconfig[lsp].setup {
+            on_attach = on_attach,
+            capabilities = capabilities,
+            root_dir = root_dir,
+            flags = {
+                debounce_text_changes = 150,
+            },
+            settings = {
+                Lua = {
+                    diagnostics = {
+                        globals = { 'vim' },
+                    },
+                    telemetry = {
+                        enable = false
+                    }
+                }
+
+            }
+        }
+    end
+
+
     lspconfig[lsp].setup {
         on_attach = on_attach,
         root_dir = root_dir,
