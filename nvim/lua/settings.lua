@@ -1,16 +1,19 @@
 local options = vim.opt
 
--- options options
-options.swapfile = true
+-- global options
+options.swapfile = false
+options.backup = false
+options.undofile = true
 options.dir = "/tmp"
 options.smartcase = true
-options.hlsearch = true
+options.hlsearch = false
 options.incsearch = true
 options.ignorecase = true
 options.scrolloff = 12
 options.laststatus = 2
 options.showtabline = 2
 options.termguicolors = true
+options.updatetime = 50
 
 -- window-local options
 options.number = true
