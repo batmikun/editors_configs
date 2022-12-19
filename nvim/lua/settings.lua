@@ -19,6 +19,7 @@ options.updatetime = 50
 options.number = true
 options.relativenumber = true
 options.wrap = true
+vim.wo.signcolumn = "yes"
 
 -- buffer-local options
 options.expandtab = true
@@ -26,6 +27,7 @@ options.shiftwidth = 4
 options.tabstop = 4
 options.smartindent = true
 
+vim.o.completeopt = 'menuone,noselect'
 -----------------------------------------------------------
 -- Startup
 -----------------------------------------------------------

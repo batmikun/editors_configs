@@ -73,9 +73,6 @@ return packer.startup(function(use)
         requires = { { 'nvim-lua/plenary.nvim' } },
     }
 
-    use 'ThePrimeagen/harpoon'
-
-
     -- Autopair
     use {
         "windwp/nvim-autopairs",
