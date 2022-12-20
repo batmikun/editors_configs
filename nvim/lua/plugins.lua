@@ -92,6 +92,9 @@ return packer.startup(function(use)
     -- Better Startup Time
     use 'lewis6991/impatient.nvim'
 
+    -- Odin highlight
+    use 'Tetralux/odin.vim'
+
     -- Start Screen
     use {
         "goolord/alpha-nvim",

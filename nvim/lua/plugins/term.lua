@@ -1,11 +1,11 @@
 local vim = vim
 
 -- Integration with lazygit
-vim.api.nvim_set_keymap('n', '<c-t>', '<Cmd>exe v:count1 . "ToggleTerm"<CR>', {silent=true})
-vim.api.nvim_set_keymap('i', '<c-t>', '<Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>', {silent=true})
+vim.api.nvim_set_keymap('n', '<c-t>', '<Cmd>exe v:count1 . "ToggleTerm direction=float"<CR>', {silent=true})
+vim.api.nvim_set_keymap('i', '<c-t>', '<Esc><Cmd>exe v:count1 . "ToggleTerm direction=float"<CR>', {silent=true})
 
 local Terminal  = require('toggleterm.terminal').Terminal
-local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
+local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction="float" })
 
 function _lazygit_toggle()
   lazygit:toggle()

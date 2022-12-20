@@ -47,7 +47,7 @@ vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 
-local on_attach = function(client, bufnr)
+local on_attach = function(_, bufnr)
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -124,24 +124,27 @@ for _, lsp in ipairs(servers) do
     end
 
     if lsp == 'sumneko_lua' then
-         lspconfig[lsp].setup {
-            on_attach = on_attach,
-            capabilities = capabilities,
-            root_dir = root_dir,
-            flags = {
-                debounce_text_changes = 150,
-            },
+        lspconfig[lsp].setup {
             settings = {
                 Lua = {
+                    runtime = {
+                        version = '5.1.5',
+                        },
                     diagnostics = {
-                        globals = { 'vim' },
+                        globals = {'vim'},
                     },
                     telemetry = {
                         enable = false
                     }
                 }
 
-            }
+            },
+            on_attach = on_attach,
+            capabilities = capabilities,
+            root_dir = root_dir,
+            flags = {
+                debounce_text_changes = 150,
+            },
         }
     end
 
