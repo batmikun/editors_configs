@@ -18,7 +18,7 @@ options.updatetime = 50
 -- window-local options
 options.number = true
 options.relativenumber = true
-options.wrap = true
+options.wrap = false
 vim.wo.signcolumn = "yes"
 
 -- buffer-local options
@@ -36,29 +36,29 @@ vim.opt.shortmess:append "sI"
 
 -- -- Disable builtin plugins
 local disabled_built_ins = {
-   "2html_plugin",
-   "getscript",
-   "getscriptPlugin",
-   "gzip",
-   "logipat",
-   "matchit",
-   "tar",
-   "tarPlugin",
-   "rrhelper",
-   "spellfile_plugin",
-   "vimball",
-   "vimballPlugin",
-   "zip",
-   "zipPlugin",
-   "tutor",
-   "rplugin",
-   "synmenu",
-   "optwin",
-   "compiler",
-   "bugreport",
-   "ftplugin",
+    "2html_plugin",
+    "getscript",
+    "getscriptPlugin",
+    "gzip",
+    "logipat",
+    "matchit",
+    "tar",
+    "tarPlugin",
+    "rrhelper",
+    "spellfile_plugin",
+    "vimball",
+    "vimballPlugin",
+    "zip",
+    "zipPlugin",
+    "tutor",
+    "rplugin",
+    "synmenu",
+    "optwin",
+    "compiler",
+    "bugreport",
+    "ftplugin",
 }
 
 for _, plugin in pairs(disabled_built_ins) do
-   vim.g["loaded_" .. plugin] = 1
+    vim.g["loaded_" .. plugin] = 1
 end

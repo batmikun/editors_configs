@@ -46,9 +46,6 @@ return packer.startup(function(use)
         },
     }
 
-    -- Snippets
-    use '/rafamadriz/friendly-snippets'
-
     -- Syntax Highlighting
     use {
         "nvim-treesitter/nvim-treesitter",
@@ -60,6 +57,7 @@ return packer.startup(function(use)
 
     -- Indent line
     use 'lukas-reineke/indent-blankline.nvim'
+    use "EdenEast/nightfox.nvim"
 
 
     -- Themes - UI
