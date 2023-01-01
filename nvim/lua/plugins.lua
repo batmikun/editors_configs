@@ -46,6 +46,9 @@ return packer.startup(function(use)
         },
     }
 
+    -- Snippet source
+    use "rafamadriz/friendly-snippets"
+
     -- Syntax Highlighting
     use {
         "nvim-treesitter/nvim-treesitter",

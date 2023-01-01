@@ -1,11 +1,5 @@
 # LSP SERVERS INSTALL INSTRUCTIONS
 
-## Astro
-
-```console
-npm install -g @astrojs/language-server
-```
-
 ## Clangd + llbd debugger
 
 [clangd + llbd]https://github.com/llvm/llvm-project/releases/tag/llvmorg-15.0.2
@@ -59,18 +53,6 @@ config = { enable = true, lint = true, unstable = true }
 language-server = { command = "deno", args = ["lsp"], language-id = "typescriptreact" }
 ```
 
-## Docker
-
-```console
-npm install -g dockerfile-language-server-nodejs
-```
-
-## Elm
-
-```console
-npm install -g elm elm-test elm-format @elm-tooling/elm-language-server
-```
-
 ## Go
 
 ```console
@@ -111,26 +93,26 @@ config = {}
 
 From this url : https://github.com/rust-analyzer/rust-analyzer
 
-## Svelte
-
-```console
-npm install -g svelte-language-server
-```
-
 ## Toml
 
 ```console
 cargo install taplo-cli --locked --features lsp
 ```
 
-## Ols [Odin]
-
-From this url : https://github.com/DanielGavin/ols/releases/tag/nightly
-
-## Zls [Zig]
-
-From this url : https://github.com/zigtools/zls
-
 ## Sumneko [Lua]
 
 From this url : https://github.com/sumneko/lua-language-server/releases
+
+# TOOLS
+
+## cmake
+https://cmake.org/download/
+
+## make
+https://sourceforge.net/projects/gnuwin32/
+
+## ripgrep
+https://github.com/BurntSushi/ripgrep/releases
+
+## lazygit
+https://github.com/jesseduffield/lazygit/releases
