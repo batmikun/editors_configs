@@ -109,10 +109,16 @@ From this url : https://github.com/sumneko/lua-language-server/releases
 https://cmake.org/download/
 
 ## make
-https://sourceforge.net/projects/gnuwin32/
+```console
+choco install make
+```
 
 ## ripgrep
-https://github.com/BurntSushi/ripgrep/releases
+```console
+cargo install ripgrep
+```
 
 ## lazygit
-https://github.com/jesseduffield/lazygit/releases
+```console
+go install github.com/jesseduffield/lazygit@latest
+```

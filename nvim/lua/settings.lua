@@ -1,40 +1,77 @@
-local options = vim.opt
+-----------------------------------------------------------
+-- Options for neovim 
+-----------------------------------------------------------
 
--- global options
-options.swapfile = false
-options.backup = false
-options.undofile = true
-options.dir = "/tmp"
-options.smartcase = true
-options.hlsearch = false
-options.incsearch = true
-options.ignorecase = true
-options.scrolloff = 12
-options.laststatus = 2
-options.showtabline = 2
-options.termguicolors = true
-options.updatetime = 50
+local vim = vim
 
--- window-local options
-options.number = true
-options.relativenumber = true
-options.wrap = false
-vim.wo.signcolumn = "yes"
+local opt_settings = {
 
--- buffer-local options
-options.expandtab = true
-options.shiftwidth = 4
-options.tabstop = 4
-options.smartindent = true
+    -- global options
+    swapfile = false,
+    backup = false,
+    undofile = true,
+    dir = "/tmp",
+    smartcase = true,
+    hlsearch = false,
+    incsearch = true,
+    ignorecase = true,
+    scrolloff = 12,
+    laststatus = 2,
+    showtabline = 2,
+    termguicolors =true,
+    updatetime = 50,
+    completeopt = "menuone,noselect,noinsert",
 
-vim.o.completeopt = 'menuone,noselect'
+    -- window-local options
+    number = true,
+    relativenumber = true,
+    wrap = false,
+
+    -- buffer-local options
+    expandtab = true,
+    shiftwidth = 4,
+    tabstop = 4,
+    smartindent = true,
+}
+
+for option, value in pairs(opt_settings) do
+    vim.opt[option] = value
+end
+
+local wo_options = {
+    signcolumn = "yes",
+    foldmethod = 'expr',
+    foldexpr = 'nvim_treesitter#foldexpr()'
+}
+
+for option, value in pairs(wo_options) do
+    vim.wo[option] = value
+end
+
+
+-----------------------------------------------------------
+-- Changing Default Terminal
+-----------------------------------------------------------
+
+local powershell_options = {
+  shell = vim.fn.executable "pwsh" == 1 and "pwsh" or "powershell",
+  shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;",
+  shellredir = "-RedirectStandardOutput %s -NoNewWindow -Wait",
+  shellpipe = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode",
+  shellquote = "",
+  shellxquote = "",
+}
+
+for option, value in pairs(powershell_options) do
+  vim.opt[option] = value
+end
+
 -----------------------------------------------------------
 -- Startup
 -----------------------------------------------------------
--- Disable nvim intro
+
 vim.opt.shortmess:append "sI"
 
--- -- Disable builtin plugins
 local disabled_built_ins = {
     "2html_plugin",
     "getscript",

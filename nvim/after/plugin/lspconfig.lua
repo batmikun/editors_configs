@@ -10,19 +10,33 @@ if not cmp_status_ok then
     return
 end
 
+local sign = function(opts)
+  vim.fn.sign_define(opts.name, {
+    texthl = opts.name,
+    text = opts.text,
+    numhl = ''
+  })
+end
+
+sign({name = 'DiagnosticSignError', text = ''})
+sign({name = 'DiagnosticSignWarn', text = ''})
+sign({name = 'DiagnosticSignHint', text = ''})
+sign({name = 'DiagnosticSignInfo', text = ''})
+
 vim.diagnostic.config({
-    update_in_insert = true,
     virtual_text = false,
-    severity_sort = true,
+    signs = true,
+    update_in_insert = true,
+    underline = true,
+    severity_sort = false,
     float = {
-        focusable = true,
-        style = "minimal",
-        border = "rounded",
-        source = "always",
-        header = "",
-        prefix = "",
+        border = 'rounded',
+        source = 'always',
+        header = '',
+        prefix = '',
     },
 })
+
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
     border = "rounded",
@@ -89,8 +103,20 @@ local root_dir = function()
     return vim.fn.getcwd()
 end
 
-local servers = { 'jsonls', 'pyright', 'html', 'cssls', 'tsserver', 'rust_analyzer', 'gopls', 'taplo', 'ols', 'marksman',
-    'sumneko_lua', 'clangd' }
+local servers = {
+    'jsonls',
+    'pyright',
+    'html',
+    'cssls',
+    'tsserver',
+    'gopls',
+    'taplo',
+    'ols',
+    'marksman',
+    'sumneko_lua',
+    'clangd'
+}
+
 
 -- Call setup
 for _, lsp in ipairs(servers) do
@@ -157,7 +183,6 @@ for _, lsp in ipairs(servers) do
             },
         }
     end
-
 
     lspconfig[lsp].setup {
         on_attach = on_attach,

@@ -41,10 +41,14 @@ return packer.startup(function(use)
             'hrsh7th/cmp-nvim-lsp',
             'hrsh7th/cmp-path',
             'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-nvim-lua',
             'hrsh7th/cmp-nvim-lsp-signature-help',
             'saadparwaiz1/cmp_luasnip',
         },
     }
+
+    -- Rust Tools
+    use 'simrat39/rust-tools.nvim'
 
     -- Snippet source
     use "rafamadriz/friendly-snippets"
@@ -60,8 +64,6 @@ return packer.startup(function(use)
 
     -- Indent line
     use 'lukas-reineke/indent-blankline.nvim'
-    use "EdenEast/nightfox.nvim"
-
 
     -- Themes - UI
     use "EdenEast/nightfox.nvim"
@@ -131,7 +133,6 @@ return packer.startup(function(use)
                 "                      Mucho en ti y seguir"
             }
             dashboard.config.opts.noautocmd = true
-            vim.cmd [[autocmd User AlphaReady echo 'ready']]
             alpha.setup(dashboard.config)
         end
     }
