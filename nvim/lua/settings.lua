@@ -21,6 +21,7 @@ local opt_settings = {
     termguicolors =true,
     updatetime = 50,
     completeopt = "menuone,noselect,noinsert",
+    showmode = false,
 
     -- window-local options
     number = true,

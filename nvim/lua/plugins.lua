@@ -104,12 +104,14 @@ return packer.startup(function(use)
 
     -- Themes - UI
     use "EdenEast/nightfox.nvim"
-    use 'nanozuki/tabby.nvim'
-    use {
-        'feline-nvim/feline.nvim',
-        requires = { { 'nvim-tree/nvim-web-devicons' } }
-    }
-
+    use 'nvim-tree/nvim-web-devicons'
+    use({
+        'crispgm/nvim-tabline',
+        config = function()
+            require('tabline').setup({})
+        end,
+    })
+    use 'itchyny/lightline.vim'
     -- Fuzzy Finder
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.0',

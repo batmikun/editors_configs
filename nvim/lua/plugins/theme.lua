@@ -1,12 +1,13 @@
 require('nightfox').setup({
-  options = {
-    styles = {
-        conditionals = "italic",
-        keywords = "bold",
-        types = "bold",
-        operators = "bold",
+    options = {
+        styles = {
+            conditionals = "italic",
+            keywords = "bold",
+            types = "bold",
+            operators = "bold",
+        }
     }
-  }
 })
 
-vim.cmd("colorscheme terafox")
+vim.cmd("colorscheme nightfox")
+vim.g.lightline = { colorscheme = "nightfox" }
