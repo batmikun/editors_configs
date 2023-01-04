@@ -22,6 +22,8 @@ local opt_settings = {
     updatetime = 50,
     completeopt = "menuone,noselect,noinsert",
     showmode = false,
+    fillchars = "fold: ",
+    foldlevel = 99,
 
     -- window-local options
     number = true,
@@ -42,8 +44,9 @@ end
 local wo_options = {
     signcolumn = "yes",
     foldmethod = 'expr',
-    foldexpr = 'nvim_treesitter#foldexpr()'
+    foldexpr = "nvim_treesitter#foldexpr()"
 }
+
 
 for option, value in pairs(wo_options) do
     vim.wo[option] = value

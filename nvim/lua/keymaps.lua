@@ -12,23 +12,12 @@ keymap("n", "J", "mzJ`z", opts)
 
 keymap("n", "<leader>pv", ":Ex<CR>", opts)
 
--- copy to system clipboard
-keymap("n", "<leader>y", "\"+y", opts)
-keymap("n", "<leader>Y", "\"+Y", opts)
-
 -- replace current word appareance
 keymap("n", "<leader>sr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- keep cursor in the middle when scrolling
 keymap("n", "<C-d>", "<C-d>zz", opts)
 keymap("n", "<C-b>", "<C-b>zz", opts)
-
--- Better window navigation
-keymap("n", "<m-h>", "<C-w>h", opts)
-keymap("n", "<m-j>", "<C-w>j", opts)
-keymap("n", "<m-k>", "<C-w>k", opts)
-keymap("n", "<m-l>", "<C-w>l", opts)
-keymap("n", "<m-tab>", "<c-6>", opts)
 
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize -2<CR>", opts)

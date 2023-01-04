@@ -74,9 +74,9 @@ return packer.startup(function(use)
                 cmdline = {
                     format = {
                         cmdline = { icon = ">" },
-                        search_down = { icon = "🔍⌄" },
-                        search_up = { icon = "🔍⌃" },
-                        filter = { icon = "$" },
+                        search_down = { icon = "[🔍 down]" },
+                        search_up = { icon = "[🔍 up]" },
+                        filter = { icon = "[Filter >]" },
                         lua = { icon = "☾" },
                         help = { icon = "?" },
                     },
@@ -99,6 +99,7 @@ return packer.startup(function(use)
         end,
         requires = {
             "MunifTanjim/nui.nvim",
+            "rcarriga/nvim-notify",
         }
     })
 
